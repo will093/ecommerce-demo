@@ -1,9 +1,8 @@
 import 'reflect-metadata';
 
-import express, { NextFunction, Request, Response } from 'express';
-
 import { createConnection } from 'typeorm';
 import { entityNotFoundErrorHandler } from './middleware/error-handlers';
+import express from 'express';
 import routes from './routes';
 
 // Create a new express application instance

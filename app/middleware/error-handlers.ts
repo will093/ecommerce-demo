@@ -1,6 +1,6 @@
-import express, { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
-export const entityNotFoundErrorHandler = (error: Error, req: Request, res: Response, next: NextFunction) => {
+export function entityNotFoundErrorHandler(error: Error, req: Request, res: Response, next: NextFunction) {
   if (error.name === 'EntityNotFound') {
     return res.status(404).json({
       type: 'EntityNotFound',
@@ -8,4 +8,4 @@ export const entityNotFoundErrorHandler = (error: Error, req: Request, res: Resp
     });
   }
   next(error);
-};
+}
