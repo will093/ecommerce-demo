@@ -1,7 +1,9 @@
 import 'reflect-metadata';
 
+import express, { NextFunction, Request, Response } from 'express';
+
 import { createConnection } from 'typeorm';
-import express from 'express';
+import { entityNotFoundErrorHandler } from './middleware/error-handlers';
 import routes from './routes';
 
 // Create a new express application instance
@@ -16,6 +18,9 @@ app.use((err: { httpStatusCode: any; }, req: any, res: any, next: any) => {
 createConnection().then(async (connection) => {
   // Initialise routing.
   app.use(routes);
+
+  // Error handling middleware
+  app.use(entityNotFoundErrorHandler);
 
   // Listen for requests.
   app.listen(3000, () => {

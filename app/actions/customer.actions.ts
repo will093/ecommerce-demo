@@ -13,7 +13,7 @@ async function findOneById(id: number) {
   return customers;
 }
 
-export default {
+export const customerActions = {
   listAll,
   findOneById,
 };
