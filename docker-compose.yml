@@ -1,0 +1,21 @@
+version: "3"
+services:
+  api:
+    build: 
+      context: .
+    ports: 
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+  postgres:
+    image: "postgres:11"
+    volumes:
+      - "/var/lib/postgresql/11/main:/var/lib/postgresql/data"
+
