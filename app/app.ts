@@ -8,11 +8,6 @@ import routes from './routes';
 // Create a new express application instance
 const app: express.Application = express();
 
-app.use((err: { httpStatusCode: any; }, req: any, res: any, next: any) => {
-  // log the error...
-  res.sendStatus(err.httpStatusCode).json(err);
-});
-
 // Connect to the db - this uses the ormconfig.json config file.
 createConnection().then(async (connection) => {
   // Initialise routing.
