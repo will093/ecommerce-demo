@@ -8,14 +8,7 @@ services:
     volumes:
       - /app/node_modules
       - .:/app
-    environment:
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
-      - PGPORT=5432
   postgres:
-    image: "postgres:11"
+    image: "postgres:10"
     volumes:
-      - "/var/lib/postgresql/11/main:/var/lib/postgresql/data"
-
+      - "~/programming/databases/ecommerce-demo-data:/var/lib/postgresql/data"
